@@ -20,6 +20,12 @@ if __name__ == "__main__":
     for username in usernames:
         print(f"Downloading posts for {username}...")
         profile = instaloader.Profile.from_username(L.context, username)
+        i = 0
         for post in profile.get_posts():
             timestamp = datetime.now().strftime('%Y-%m-%d')
-            L.download_post(post, target=f"./results/{profile.username}_posts_{timestamp}")
+            L.download_post(post, target=f"{profile.username}_posts")
+            # move files to new directory
+            path = f"{profile.username}_posts"
+            results_path = f"./results/{profile.username}_posts_{i}"
+            os.system(f"mv {path} {results_path}")
+            i += 1
