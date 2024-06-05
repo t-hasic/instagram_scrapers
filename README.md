@@ -1,2 +1,5 @@
-# instagram_scrapers
-Evaluation of various Instagram scrapers.
+# Evaluation of various Instagram scrapers:
+
+- Instaloader
+- Instagrapi
+- Instagram-Private-API
