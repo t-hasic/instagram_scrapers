@@ -6,7 +6,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from utils.get_metrics import get_metrics
 
-def scrape_usernames_posts(usernames, metrics = False):
+def scrape_usernames_posts(usernames, metrics = False, num_posts = None):
     """
     
     Scrapes the posts of a list of usernames and saves them in a directory.
@@ -15,6 +15,7 @@ def scrape_usernames_posts(usernames, metrics = False):
 
     usernames (list): list of usernames to scrape
     metrics (bool): if True, prints metrics for each username
+    num_posts (int): number of posts to scrape for each username
 
     Returns:
 
@@ -54,6 +55,8 @@ def scrape_usernames_posts(usernames, metrics = False):
             results_path = f"./results_{timestamp}/{username}/post_{i}"
             os.system(f"mv {path} {results_path}")
             i += 1
+            if num_posts and i >= num_posts:
+                break
             time.sleep(random.randint(1, 5))
         # delete original directory
         os.system(f"rm -r {path}")
@@ -64,9 +67,9 @@ def scrape_usernames_posts(usernames, metrics = False):
             print(f"Metrics for {username}:\n")
             print(f"Number of videos: {num_videos}")
             print(f"Number of images: {num_images}")
-            print(f"Number of highlights: {num_highlights}")
+            print(f"Total files: {num_highlights}")
             print("-"*100)
         print(f"\nScraping complete for {username}!\n")
 
 if __name__ == "__main__":
-    scrape_usernames_posts(["beehiveboston"])
+    scrape_usernames_posts(["beehiveboston", "royaleboston"], metrics = True, num_posts = 3)
