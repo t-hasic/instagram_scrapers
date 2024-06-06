@@ -44,7 +44,7 @@ def scrape_usernames_stories(usernames, metrics = False):
             path_metrics = get_metrics(path)
             num_videos = path_metrics[0]
             num_images = path_metrics[1]
-            num_highlights = path_metrics[2]
+            num_stories = path_metrics[2]
         # move files to new directory
         os.system(f"mv {path} results_{timestamp}/{username}")
         # remove original directory
@@ -56,7 +56,7 @@ def scrape_usernames_stories(usernames, metrics = False):
             print(f"Metrics for {username}:\n")
             print(f"Number of videos: {num_videos}")
             print(f"Number of images: {num_images}")
-            print(f"Number of highlights: {num_highlights}")
+            print(f"Number of stories: {num_stories}")
             print("-"*100)
         print(f"\nScraping complete for {username}!\n")
         time.sleep(random.randint(1, 5))
