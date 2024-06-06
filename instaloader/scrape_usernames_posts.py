@@ -40,7 +40,9 @@ def scrape_usernames_posts(usernames, metrics = False, num_posts = None):
         if metrics:
             num_videos = 0
             num_images = 0
-            num_highlights = 0
+            num_files = 0
+            total_delay = 0
+            start_time = time.time()
 
         i = 0
         for post in profile.get_posts():
@@ -50,16 +52,21 @@ def scrape_usernames_posts(usernames, metrics = False, num_posts = None):
                 path_metrics = get_metrics(path)
                 num_videos += path_metrics[0]
                 num_images += path_metrics[1]
-                num_highlights += path_metrics[2]
+                num_files += path_metrics[2]
             # move files to new directory
             results_path = f"./results_{timestamp}/{username}/post_{i}"
             os.system(f"mv {path} {results_path}")
             i += 1
             if num_posts and i >= num_posts:
                 break
-            time.sleep(random.randint(1, 5))
+            timeout = random.randint(1, 5)
+            if metrics:
+                total_delay += timeout
+            time.sleep(timeout)
         # delete original directory
         os.system(f"rm -r {path}")
+        if metrics:
+            end_time = time.time()
         # print metrics
         if metrics:
             print("\n")
@@ -67,7 +74,7 @@ def scrape_usernames_posts(usernames, metrics = False, num_posts = None):
             print(f"Metrics for {username}:\n")
             print(f"Number of videos: {num_videos}")
             print(f"Number of images: {num_images}")
-            print(f"Total files: {num_highlights}")
+            print(f"Collected {num_files} files in {end_time - start_time - total_delay} seconds.")
             print("-"*100)
         print(f"\nScraping complete for {username}!\n")
 
