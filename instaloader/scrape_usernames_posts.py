@@ -79,4 +79,4 @@ def scrape_usernames_posts(usernames, metrics = False, num_posts = None):
         print(f"\nScraping complete for {username}!\n")
 
 if __name__ == "__main__":
-    scrape_usernames_posts(["beehiveboston", "royaleboston"], metrics = True, num_posts = 3)
+    scrape_usernames_posts(["beehiveboston", "royaleboston", "thegrandboston", "bignightlive", "bijouboston"], metrics = True, num_posts = 3)
