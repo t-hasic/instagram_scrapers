@@ -19,12 +19,12 @@ def get_metrics(folder_path):
 
     num_videos = 0
     num_images = 0
-    num_highlights = 0
+    num_files = 0
     for file in os.listdir(folder_path):
         if file.endswith(".mp4"):
             num_videos += 1
-            num_highlights += 1
+            num_files += 1
         elif file.endswith(".jpg"):
             num_images += 1
-            num_highlights += 1
-    return num_videos, num_images, num_highlights
+            num_files += 1
+    return num_videos, num_images, num_files
