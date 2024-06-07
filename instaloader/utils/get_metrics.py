@@ -28,3 +28,4 @@ def get_metrics(folder_path):
             num_images += 1
             num_files += 1
     return num_videos, num_images, num_files
+    

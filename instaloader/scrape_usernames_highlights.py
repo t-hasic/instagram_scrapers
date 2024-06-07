@@ -26,7 +26,7 @@ def scrape_username_highlights(usernames, metrics = False):
     # Get instance
     L = instaloader.Instaloader()
     L.interactive_login(USERNAME) # (ask password on terminal) 
-
+  
     # create results directory
     timestamp = datetime.now().strftime('%Y-%m-%d')
     os.system(f"mkdir results_{timestamp}")
