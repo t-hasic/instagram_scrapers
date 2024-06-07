@@ -1,3 +1,6 @@
+pillow
+selenium
+selenium-stealth
 instagrapi
 instaloader
 python-dotenv
